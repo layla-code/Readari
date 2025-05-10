@@ -7,7 +7,7 @@ use App\Models\Articles;
 use App\Models\Level;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
 class ArticlesController extends Controller
 {
     public function beginner()
