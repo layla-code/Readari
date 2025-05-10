@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<style>
+.btn-custom {
+    background-color: #3c6a3c; 
+    color: rgba(255, 255, 255, 0.906);
+    border: none;
+}
+.btn-custom:hover {
+    background-color: rgb(59, 137, 63); 
+    color: rgba(255, 255, 255, 0.906);
+}
+</style>
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -63,7 +74,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-custom">
                                     {{ __('Register') }}
                                 </button>
                             </div>

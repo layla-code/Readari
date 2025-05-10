@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="csfr-token" content="{{csrf_token()}}">
+   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title') | Aricle reading website </title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
@@ -86,7 +87,7 @@
 </head>
 <body>
 <header>
-<!-- Header -->
+
 <nav class="navbar navbar-expand-lg">
   <div class="container d-flex justify-content-between align-items-center">
     <a class="navbar-brand d-flex align-items-center" href="#">
@@ -97,7 +98,18 @@
       <a class="nav-link" href="{{route('index')}}">HOME</a>
       <a class="nav-link" href="{{route('account')}}">ACCOUNT</a>
       <a class="nav-link" href="{{route('aboutus')}}">ABOUT US</a>
-      <a class="navbar-link add-article" href="{{route('addarticle')}}">ADD ARTICLE</a>
+      <a class="navbar-link add-article" href="{{route('addarticle.form')}}">ADD ARTICLE</a>
+      @auth
+       <form action="{{ route('logout') }}" method="POST" class="d-inline ms-2">
+       @csrf
+       <button type="submit"
+            class="btn btn-link p-0 text-white"
+            title="log-out">
+       <i class="bi bi-box-arrow-right"></i>
+       </button>
+       </form>
+      @endauth
+
     </div>
   </div>
 </nav>
@@ -107,10 +119,13 @@
 @yield('content')
 </main>
 
+
 <footer>
   <p>Copyright ©2025 All rights reserved</p>
 </footer>
 
+@yield('scripts')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

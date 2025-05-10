@@ -138,24 +138,43 @@
   <!-- Article Cards Flex -->
   <div class="container">
     <div class="cards-wrapper">
-      @foreach ($add as $Field)
+      @foreach($items as $article) 
         <div class="card-item">
           <div class="article-card">
             <div>
-              <h5>{{ $Field->Title }}</h5>
+              <h5>{{ $article->Title }}</h5>
               <p class="text-muted">
-                {{ $Field->created_at->format('M d, Y') }}
+                {{ $article->created_at ? $article->created_at->format('M d, Y') : 'Unknown Date' }}
                 &nbsp;|&nbsp;
-                {{ $Field->Categorie }}
+                {{ $article->Categorie }}
               </p>
-              <p>{{ Str::limit($Field->Description, 100, '...') }}</p>
+              <p>{{ \Illuminate\Support\Str::limit($article->Description, 100, '...') }}</p>
             </div>
-            <a href="#" class="btn-more">more</a>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <a href="#" class="btn-more">more</a>
+              @auth {{-- عرض الأزرار فقط للمستخدمين المسجّلين :contentReference[oaicite:1]{index=1} --}}
+                @if(! in_array($article->id, $favoriteIds))
+                  <button class="btn btn-sm btn-outline-primary add-favorite-btn px-2 py-1"
+                          data-id="{{ $article->id }}">
+                    <i class="bi bi-heart"></i> Add
+                  </button>
+                @else
+                  <button class="btn btn-sm btn-success px-2 py-1" disabled>
+                    <i class="bi bi-heart-fill"></i> Favorited
+                  </button>
+                @endif
+              @endauth
+            </div>
           </div>
         </div>
-      @endforeach
+      @endforeach 
     </div>
   </div>
 
 </body>
 @endsection
+
+@section('scripts')
+<script src="{{ asset('js/script.js') }}"></script>
+@endsection
+

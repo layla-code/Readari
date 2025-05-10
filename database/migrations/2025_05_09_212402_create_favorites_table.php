@@ -7,22 +7,21 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations. 
+     * Run the migrations.
      */
     public function up(): void
     {
-      
-    Schema::create('articles', function (Blueprint $table) {
+    Schema::create('favorites', function (Blueprint $table) {
         $table->id();
-        $table->string('Title');
-        $table->string('Categorie');
-        $table->text('Description')->nullable();
-        $table->foreignId('levels_id')
-              ->constrained('levels')
+        $table->foreignId('user_id')
+              ->constrained()
               ->cascadeOnDelete();
+        $table->foreignId('article_id')
+              ->constrained('articles')
+              ->cascadeOnDelete();
+        $table->unique(['user_id','article_id']);
         $table->timestamps();
     });
-
     }
 
     /**
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('favorites');
     }
 };

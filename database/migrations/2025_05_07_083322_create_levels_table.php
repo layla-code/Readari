@@ -13,18 +13,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('levels', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('Level');
-            $table->string('Description')->nullable();
-        });
+        
+    Schema::create('levels', function (Blueprint $table) {
+        $table->id();
+        $table->string('Level');
+        $table->text('Description')->nullable();
+        $table->timestamps();
+    });
 
-        DB::table('levels')->insert([
-            ['Level' => 'Beginner', 'Description' => ''],
-            ['Level' => 'Intermediate', 'Description' => ''],
-            ['Level' => 'Advanced', 'Description' => ''],
-        ]);
+    
+    DB::table('levels')->insert([
+        ['Level'=>'Beginner','Description'=>''],
+        ['Level'=>'Intermediate','Description'=>''],
+        ['Level'=>'Advanced','Description'=>''],
+    ]);
     }
 
     /**

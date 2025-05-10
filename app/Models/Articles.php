@@ -11,4 +11,11 @@ class Articles extends Model
         'Categorie',
         'Description',
         'levels_id',
-    ];}
+    ];
+
+    public function favoredByUsers()
+    {
+    return $this->belongsToMany(User::class, 'favorites');
+    }
+
+}
