@@ -11,7 +11,7 @@ use App\Http\Controllers\FavoriteController;
 
 Route::redirect('/', '/home');
 Route::get('/home', [HomeController::class, 'index'])->name('index');
-Route::get('/about', [ReadariController::class, 'about'])->name('aboutus');
+Route::get('/aboutus', [ReadariController::class, 'about'])->name('aboutus');
 Route::get('/beginner', [ArticlesController::class, 'beginner'])->name('beginner');
 
 Auth::routes(); 
