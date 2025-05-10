@@ -30,6 +30,3 @@ Route::middleware('auth')->group(function () {
     });
 
 });
-
-
-#Route::get('/account', [AccountController::class, 'index'])->middleware('auth');
