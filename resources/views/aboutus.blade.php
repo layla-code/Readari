@@ -7,7 +7,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-10 text-center">
           <p class="lead text-soft-white">
-            Welcome to <strong>Readri</strong> – your gateway to technology made simple. 
+            Welcome to <strong>Readri</strong> your gateway to technology made simple. 
             At Readri, we believe that knowledge in the tech world should be accessible to everyone, 
             regardless of background or experience. That’s why we offer carefully curated technical articles 
             across a wide range of technology domains, tailored to three distinct levels: 
